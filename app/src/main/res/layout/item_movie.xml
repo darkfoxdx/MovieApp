@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+                name="viewModel"
+                type="com.projecteugene.movieapp.viewmodel.MovieViewModel" />
+    </data>
+    <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.MaterialComponents.CardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/card_margin"
+            android:minHeight="200dp"
+            app:cardElevation="5dp">
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{(view) -> viewModel.onClickItem(view, viewModel)}">
+            <ImageView
+                    android:id="@+id/poster"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:mutable_image_path="@{viewModel.image}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/title"
+                    app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                    android:id="@+id/title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                    android:layout_marginStart="@dimen/card_item_margin"
+                    android:layout_marginEnd="@dimen/card_item_margin"
+                    app:mutable_text="@{viewModel.title}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/poster"
+                    app:layout_constraintBottom_toTopOf="@id/date"/>
+            <TextView
+                    android:id="@+id/date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                    android:layout_marginStart="@dimen/card_item_margin"
+                    android:layout_marginEnd="@dimen/card_item_margin"
+                    app:mutable_text="@{viewModel.date}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/title"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

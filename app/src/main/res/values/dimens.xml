@@ -1,0 +1,8 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="peek_height">34dp</dimen>
+    <dimen name="text_margin">8dp</dimen>
+    <dimen name="activity_margin">16dp</dimen>
+    <dimen name="card_margin">8dp</dimen>
+    <dimen name="card_item_margin">8dp</dimen>
+</resources>
