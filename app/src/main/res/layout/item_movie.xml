@@ -5,7 +5,7 @@
     <data>
         <variable
                 name="viewModel"
-                type="com.projecteugene.movieapp.viewmodel.MovieViewModel" />
+                type="com.projecteugene.movieapp.viewmodel.MovieItem" />
     </data>
     <com.google.android.material.card.MaterialCardView
             style="@style/Widget.MaterialComponents.CardView"

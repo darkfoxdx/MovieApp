@@ -5,6 +5,9 @@
         xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
+            name="adapter"
+            type="com.projecteugene.movieapp.adapter.ImageFragmentAdapter" />
+        <variable
                 name="imageViewModel"
                 type="com.projecteugene.movieapp.viewmodel.MovieImageApiViewModel" />
         <variable
@@ -64,7 +67,7 @@
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                app:adapter="@{imageViewModel.adapter}"/>
+                                app:adapter="@{adapter}"/>
                         <com.google.android.material.tabs.TabLayout
                                 android:id="@+id/tabLayout"
                                 android:layout_width="match_parent"
@@ -92,8 +95,8 @@
                         android:layout_height="@dimen/peek_height"
                         android:gravity="center"
                         android:text="@string/swipe_up_here_for_info"
-                        android:textColor="@android:color/white"
-                        android:shadowColor="@android:color/black"
+                        android:textColor="#000000"
+                        android:shadowColor="#000000"
                         android:textSize="22sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"

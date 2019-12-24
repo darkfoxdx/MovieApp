@@ -10,17 +10,17 @@ import com.projecteugene.movieapp.model.MovieData
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
+import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 /**
  * Created by Eugene Low
  */
-class LatestMovieApiViewModel(private val movieDao: MovieDao): BaseViewModel() {
-    @Inject
-    lateinit var apiService: ApiService
+class LatestMovieApiViewModel
+@Inject
+constructor(private val movieDao: MovieDao, private val apiService: ApiService): BaseViewModel() {
 
-    private lateinit var disposable: Disposable
     val isLoading:MutableLiveData<Boolean> = MutableLiveData()
     val adapter = MovieAdapter()
 
@@ -29,7 +29,7 @@ class LatestMovieApiViewModel(private val movieDao: MovieDao): BaseViewModel() {
     }
 
     private fun call(){
-        disposable  = Observable.fromCallable { movieDao.all }
+        Observable.fromCallable { movieDao.all }
             .concatMap {
                     list ->
                 if(list.isEmpty())
@@ -46,7 +46,7 @@ class LatestMovieApiViewModel(private val movieDao: MovieDao): BaseViewModel() {
             .subscribe(
                 { onSuccess(it) },
                 { onError(it) }
-            )
+            ).addTo(compositeDisposable)
     }
 
     private fun onStart() {
@@ -62,10 +62,5 @@ class LatestMovieApiViewModel(private val movieDao: MovieDao): BaseViewModel() {
     private fun onError(throwable: Throwable) {
         Log.e("discover onError", "error", throwable)
         isLoading.value = false
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        disposable.dispose()
     }
 }

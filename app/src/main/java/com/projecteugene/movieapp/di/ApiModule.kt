@@ -1,4 +1,4 @@
-package com.projecteugene.movieapp.di.module
+package com.projecteugene.movieapp.di
 
 import com.projecteugene.movieapp.api.ApiService
 import dagger.Module
@@ -13,16 +13,14 @@ import retrofit2.Retrofit
 @Suppress("unused")
 object ApiModule {
     @Provides
-    @Reusable
     @JvmStatic
-    internal fun provideApi(retrofit: Retrofit): ApiService {
+    fun provideApi(retrofit: Retrofit): ApiService {
         return retrofit.create(ApiService::class.java)
     }
 
     @Provides
-    @Reusable
     @JvmStatic
-    internal fun provideRetrofitClient(): Retrofit {
+    fun provideRetrofitClient(): Retrofit {
         return ApiService.getInstance()
     }
 }

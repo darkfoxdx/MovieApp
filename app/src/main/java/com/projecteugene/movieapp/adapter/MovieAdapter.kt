@@ -10,7 +10,7 @@ import com.projecteugene.movieapp.R
 import com.projecteugene.movieapp.activity.DetailActivity
 import com.projecteugene.movieapp.databinding.ItemMovieBinding
 import com.projecteugene.movieapp.model.MovieData
-import com.projecteugene.movieapp.viewmodel.MovieViewModel
+import com.projecteugene.movieapp.viewmodel.MovieItem
 
 /**
  * Created by Eugene Low
@@ -40,7 +40,7 @@ class MovieAdapter: RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
     }
 
     class ViewHolder(private val binding: ItemMovieBinding):RecyclerView.ViewHolder(binding.root){
-        private val viewModel = MovieViewModel()
+        private val viewModel = MovieItem()
         fun bind(item :MovieData){
             viewModel.bind(item)
             binding.viewModel = viewModel
